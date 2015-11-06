@@ -1,24 +1,21 @@
 # top level stuff you probably don't need to touch
+gems: [jekyll-paginate]
 highlighter: pygments
 markdown: rdiscount
 rdiscount:
   extensions: [smart]
-permalink: /:title.html
+permalink: /:title
 paginate: 5
 port: 3000
 safe: true
 
-
 # edit here to achieve your personal greatness
 url: http://username.github.io/
-baseurl: /sustain/
-title: Chris Turner
-author: Chris Turner
-description: Personal blog and resume
+baseurl: /
+title: Ruben Tudorel Niculcea
+author: Ruben Tudorel Niculcea
+description: Projects and Resume
 avatar: profile.png
-email: yourname@email.com
-github: username
-twitter: chrisstturner
-linkedin: username
-disqus: username
-google_analytics: UA-69391421-1
+email: ruben.niculcea@gmail.com
+github: RubenSandwich
+linkedin: rubenniculcea

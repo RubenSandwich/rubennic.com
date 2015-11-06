@@ -6,7 +6,7 @@ body {
   background-color: #fff;
   font-family: 'Source Sans Pro', sans-serif;
   /* The html and body elements cannot have any padding or margin. */
-  border-top: 3px solid #27A822;
+  border-top: 3px solid #6b6b6b;
 }
 /* Wrapper for page content to push down footer */
 #wrap {
@@ -65,6 +65,19 @@ body {
 .navbar-default .navbar-form {
   border-color: #6b6b6b;
 }
+.navbar a.navbar-brand {
+  position: absolute;
+}
+.navbar a.active:after {
+    content: "";
+    color: transparent;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 6px;
+    bottom: 6px;
+    border: 1px solid #333332;
+}
 .navbar-default .navbar-link {
   color: #6b6b6b;
 }
@@ -96,10 +109,25 @@ body {
   margin: 20px 0;
 }
 .container a {
-  color: #27A822;
+  color: #9d9d9d;
+}
+.container .social a:hover {
+  background: none;
 }
 .container a:hover {
-  color: #267723;
+  color: #9d9d9d;
+  text-decoration: none;
+  background: -webkit-linear-gradient(#fff,#fff),-webkit-linear-gradient(#fff,#fff),-webkit-linear-gradient(#333332,#333332);
+  background: -moz-linear-gradient(#fff,#fff),-moz-linear-gradient(#fff,#fff),-moz-linear-gradient(#333332,#333332);
+  background: -o-linear-gradient(#fff,#fff),-o-linear-gradient(#fff,#fff),-o-linear-gradient(#333332,#333332);
+  background: -ms-linear-gradient(#fff,#fff),-ms-linear-gradient(#fff,#fff),-ms-linear-gradient(#333332,#333332);
+  background: linear-gradient(#fff,#fff),linear-gradient(#fff,#fff),linear-gradient(#333332,#333332);
+  -webkit-background-size: .05em 1px,.05em 1px,1px 1px;
+  -moz-background-size: .05em 1px,.05em 1px,1px 1px;
+  background-size: .05em 1px,.05em 1px,1px 1px;
+  background-repeat: no-repeat,no-repeat,repeat-x;
+  text-shadow: .03em 0 #fff,-.03em 0 #fff,0 .03em #fff,0 -.03em #fff,.06em 0 #fff,-.06em 0 #fff,.09em 0 #fff,-.09em 0 #fff,.12em 0 #fff,-.12em 0 #fff,.15em 0 #fff,-.15em 0 #fff;
+  background-position: 0 87%,100% 87%,0 87%;
 }
 .img-responsive {
  display: block;
@@ -121,10 +149,10 @@ body {
   font-size: 15px;
 }
 .panel-default h4 a, h5 a {
-  color: #27A822;
+  color: #9d9d9d;
 }
 .panel-default h4 a:hover, h5 a:hover {
-  color: #267723;
+  color: #9d9d9d;
 }
 .panel{
   border-style: none;
@@ -137,9 +165,6 @@ body {
   padding-top: 12px;
   word-spacing: 25px;
 }
-.social h4 > a {
-  color: #000000;
-}
 .avatar {
   padding-top: 5%;
 }
@@ -149,14 +174,8 @@ body {
 .blog-title{
   padding-top: 2px;
 }
-.related-posts h4 {
-  text-align: center;
-}
 .page-not-found {
   padding-top: 20%;
-}
-.disqus {
-  padding-bottom: 15px;
 }
 
 /* Footer 
@@ -168,12 +187,3 @@ body {
 .text-muted {
 	color: #6b6b6b;
 }
-div.footer{
-  border-bottom: 5px solid #27A822;;
-}
-/* Set the fixed height of the footer here */
-/*.footer {
-  height: 50px;
-  padding-bottom: 15px;
-  
-}*/

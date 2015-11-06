@@ -1,13 +1,55 @@
 <nav class="navbar navbar-default">
   <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="{{ site.baseurl }}"><i class="fa fa-home"></i></a>
-    </div>
+      <div class="navbar-header">
+        <a
+        {% if page.title == 'Home' %}
+          class="active navbar-brand"
+        {% else %}
+          class="navbar-brand" href="/"
+        {% endif %}
+        >
+          <b>Home</b>
+        </a>
+      </div>
     <div id="navbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="{{ site.baseurl }}blog.html">BLOG</a></li>
-        <li><a href="{{ site.baseurl }}projects.html">PROJECTS</a></li>
-        <li><a href="http://biomadeira.github.io/vitae">RESUME</a></li>
+        <li>
+          <a
+          {% if page.title == 'Blog' %}
+            class="active"
+          {% else %}
+            href="{{ site.baseurl }}blog.html"
+          {% endif %}
+          >
+            BLOG
+          </a>
+        </li>
+
+        <li>
+          <a
+          {% if page.title == 'Projects' %}
+            class="active"
+          {% else %}
+            href="{{ site.baseurl }}projects.html"
+          {% endif %}
+          >
+            PROJECTS
+          </a>
+        </li>
+
+        <li>
+          <a
+          {% if page.title == 'Resume' %}
+            class="active"
+          {% else %}
+            href="{{ site.baseurl }}resume.html"
+          {% endif %}
+          >
+            RESUME
+          </a>
+        </li>
+
+        <!-- <li><a href="http://biomadeira.github.io/vitae">RESUME</a></li> -->
       </ul>
     </div>
   </div>
