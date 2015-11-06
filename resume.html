@@ -1,0 +1,30 @@
+---
+layout: layout
+title: Resume
+---
+
+<div class="container resume">
+  <div class="row">
+    <div class="col-xs-12 col-sm-3">
+      <img src="{{ site.baseurl }}static/img/profile.png" class="img-circle">
+      <h1>{{ site.author }}</h1>
+      <p>
+        <a href="{{ site.email_full }}">{{ site.email }}</a><br/>
+        <a href="https://github.com/{{ site.github }}">
+          <i class="fa fa-github"></i> Github
+        </a>
+      </p>
+    </div>
+    <div class="col-xs-12 col-sm-9">
+      {% include employment.html %}
+
+      {% include education.html %}
+
+      {% include skills.html %}
+
+      {% include initiatives.html %}
+
+      {% include interests.html %}
+    </div>
+  </div>
+</div>

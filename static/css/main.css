@@ -66,7 +66,7 @@ body {
   border-color: #6b6b6b;
 }
 .navbar a.navbar-brand {
-  position: absolute;
+  position: relative;
 }
 .navbar a.active:after {
     content: "";
@@ -176,6 +176,18 @@ body {
 }
 .page-not-found {
   padding-top: 20%;
+}
+.resume {
+  text-align: left;
+}
+.resume .img-circle  {
+  width: 150px;
+}
+.resume h3 {
+  border-bottom: 1px solid gray;
+}
+.resume .h1, .h2, .h3, h1, h2, h3 {
+  margin: 0px;
 }
 
 /* Footer 
