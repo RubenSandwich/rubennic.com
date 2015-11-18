@@ -3,7 +3,7 @@
 html,
 body {
   height: 100%;
-  background-color: #fff;
+  background-color: #F5F5F5;
   font-family: 'Source Sans Pro', sans-serif;
   /* The html and body elements cannot have any padding or margin. */
   border-top: 3px solid #6b6b6b;
@@ -17,6 +17,9 @@ body {
   margin: 0 auto -65px;
   /* Pad bottom by footer height */
   /*padding: 0 0 60px;*/
+}
+.panel {
+  background-color: #F5F5F5;
 }
 
 /* Navbar
@@ -177,17 +180,54 @@ body {
 .page-not-found {
   padding-top: 20%;
 }
-.resume {
-  text-align: left;
+.no-margin {
+  margin: 0;
 }
+.no-indent {
+  text-indent: 0;
+}
+p {
+  text-indent: 1em;
+}
+.row {
+    position: relative;
+}
+.text-bottom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+@media (max-width: 475px) {
+  .text-bottom {
+    position: relative;
+  }
+}
+/* Resume 
+-------------------------------------------------- */
 .resume .img-circle  {
-  width: 150px;
+  width: 190px;
 }
-.resume h3 {
+@media (min-width: 768px) {
+  .resume .img-circle  {
+    width: 150px;
+  }
+}
+.resume section {
+  margin-bottom: 10px;
+}
+.resume .bottom-border {
   border-bottom: 1px solid gray;
 }
-.resume .h1, .h2, .h3, h1, h2, h3 {
+.resume .h1, .h2, .h3, h1, h2, h3, .h4, .h5, .h6, h4, h5, h6{
   margin: 0px;
+}
+.resume .text-right-or-underneath {
+  text-align: right;
+}
+@media (max-width: 475px) {
+  .resume .text-right-or-underneath {
+    text-align: left;
+  }
 }
 
 /* Footer 
