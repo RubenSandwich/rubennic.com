@@ -243,6 +243,9 @@ p {
 .resume .text-right-or-underneath {
   text-align: right;
 }
+.resume .extra-padding-left {
+  padding-left: 55px;
+}
 @media (max-width: 475px) {
   .resume .text-right-or-underneath {
     text-align: left;
