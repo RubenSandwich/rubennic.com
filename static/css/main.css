@@ -175,10 +175,10 @@ body {
   margin-left: 25px;
   margin-right: 25px;
 }
-.social-icon {
+.icon {
   width: 32px;
 }
-.social-icon:hover {
+.icon:hover {
   -webkit-filter: brightness(0.25); 
   filter: brightness(0.25);
 }
@@ -233,7 +233,7 @@ p {
 }
 /* Resume 
 -------------------------------------------------- */
-.resume .social-icon {
+.resume .icon {
   width: 12px;
   vertical-align: initial;
 }
