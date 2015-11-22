@@ -7,16 +7,18 @@ title: Resume
   <div class="row text-left">
     <div class="col-sm-3 col-xs-12">
       <div class="col-xs-12 text-center">
-        <img src="{{ site.baseurl }}static/img/profile.png" class="img-circle">
+        <img src="{{ site.baseurl }}static/img/{{ site.avatar }}" class="img-circle">
       </div>
-      <div class="col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-2">
-        <h3>{{ site.author }}</h3>
-        <p class="no-indent">
-          <a href="{{ site.email_full }}">{{ site.email }}</a><br/>
-          <a href="https://github.com/{{ site.github }}">
-            <i class="fa fa-github"></i> Github
-          </a>
-        </p>
+      <div class="row">
+        <div class="col-sm-12 col-sm-offset-0 col-ms-7 col-ms-offset-3 col-xs-11 col-xs-offset-1">
+          <h3>{{ site.author }}</h3>
+          <p class="no-indent">
+            <a href="{{ site.email_full }}">{{ site.email }}</a><br/>
+            <a href="http://github.com/{{ site.github }}">
+              <img class="social-icon" src="{{ site.baseurl }}static/img/fa-github.png"> Github
+            </a>
+          </p>
+        </div>
       </div>
     </div>
     <div class="col-xs-12 col-sm-9">

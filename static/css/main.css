@@ -133,6 +133,9 @@ body {
   text-shadow: .03em 0 #fff,-.03em 0 #fff,0 .03em #fff,0 -.03em #fff,.06em 0 #fff,-.06em 0 #fff,.09em 0 #fff,-.09em 0 #fff,.12em 0 #fff,-.12em 0 #fff,.15em 0 #fff,-.15em 0 #fff;
   background-position: 0 87%,100% 87%,0 87%;
 }
+.img-circle  {
+  width: 190px;
+}
 .img-responsive {
  display: block;
  height: auto;
@@ -167,10 +170,17 @@ body {
 }
 .social {
   padding-top: 12px;
-  word-spacing: 25px;
 }
-.avatar {
-  padding-top: 5%;
+.social .center-margin {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+.social-icon {
+  width: 32px;
+}
+.social-icon:hover {
+  -webkit-filter: brightness(0.25); 
+  filter: brightness(0.25);
 }
 .blog-header {
   margin-bottom: 20px;
@@ -223,8 +233,9 @@ p {
 }
 /* Resume 
 -------------------------------------------------- */
-.resume .img-circle  {
-  width: 190px;
+.resume .social-icon {
+  width: 12px;
+  vertical-align: initial;
 }
 @media (min-width: 768px) {
   .resume .img-circle  {
@@ -251,12 +262,19 @@ p {
     text-align: left;
   }
 }
+@media (max-width: 525px) {
+  .resume .text-right-or-underneath.more-characters {
+    text-align: left;
+    position: relative;
+  }
+}
 .v-center {
   display: inline-block;
   vertical-align: middle;
   float: none;
 }
-
+/* Post
+-------------------------------------------------- */
 /* Footer 
 -------------------------------------------------- */
 
