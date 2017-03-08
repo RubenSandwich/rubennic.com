@@ -1,6 +1,5 @@
 # top level stuff you probably don't need to touch
 gems: [jekyll-paginate]
-highlighter: pygments
 markdown: rdiscount
 rdiscount:
   extensions: [smart]
@@ -10,8 +9,7 @@ port: 3000
 safe: true
 
 # edit here to achieve your personal greatness
-url: http://username.github.io/
-baseurl: 
+url: http://www.rubennic.com 
 title: Ruben Nic
 author: Ruben Tudorel Niculcea
 description: Projects and Resume
