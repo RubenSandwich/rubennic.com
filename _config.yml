@@ -11,7 +11,7 @@ safe: true
 
 # edit here to achieve your personal greatness
 url: http://username.github.io/
-baseurl: /
+baseurl: 
 title: Ruben Nic
 author: Ruben Tudorel Niculcea
 description: Projects and Resume
