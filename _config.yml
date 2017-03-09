@@ -9,8 +9,8 @@ port: 3000
 safe: true
 
 # edit here to achieve your personal greatness
-url: http://www.rubennic.com
-baseurl: / 
+url: http://rubennic.com
+baseurl: /
 title: Ruben Nic
 author: Ruben Tudorel Niculcea
 description: Projects and Resume
