@@ -4,11 +4,32 @@ title: Blog
 ---
 
 <div class="container">
-  {% if site.posts.first == nil %}
-    <h4>Coming Soon</h4>
-  {% endif %}
   <div class="panel panel-default">
     <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-5 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+          <h5>
+            <a href="https://studio.carnegiemuseums.org/out-loud-cdc979453ef0">
+              Code Release: Out Loud
+            </a>
+          </h5>
+        </div>
+        <div class="col-sm-5 col-sm-offset-1 col-xs-12 col-xs-offset-0 v-center">
+          Oct 25, 2016
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-5 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+          <h5>
+            <a href="https://studio.carnegiemuseums.org/software-apprenticeship-f37e1beb5bd4">
+              Software Apprenticeship in the Studio
+            </a>
+          </h5>
+        </div>
+        <div class="col-sm-5 col-sm-offset-1 col-xs-12 col-xs-offset-0 v-center">
+          Aug 31, 2016
+        </div>
+      </div>
       {% for post in site.posts %}
       <div class="row">
         <div class="col-sm-5 col-sm-offset-1 col-xs-12 col-xs-offset-0">
