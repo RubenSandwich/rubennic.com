@@ -161,8 +161,11 @@ body {
 .panel-default h4 a:hover, h5 a:hover {
   color: #9d9d9d;
 }
-.panel{
+.panel {
   border-style: none;
+}
+.no-top-margin {
+  margin-top: 0px !important;
 }
 .panel-body {
   padding-top: -10px;
@@ -216,6 +219,12 @@ p {
 .strikethrough {
   position: relative;
 }
+.bottom-border {
+  border-bottom: 1px solid gray;
+}
+.bottom-padding-small {
+  padding-bottom: 10px;
+}
 .strikethrough:before {
   position: absolute;
   content: "";
@@ -244,9 +253,6 @@ p {
 }
 .resume section {
   margin-bottom: 10px;
-}
-.resume .bottom-border {
-  border-bottom: 1px solid gray;
 }
 .resume .h1, .h2, .h3, h1, h2, h3, .h4, .h5, .h6, h4, h5, h6{
   margin: 0px;
