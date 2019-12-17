@@ -1,27 +1,61 @@
----
-layout: home
-title: Home
----
-<section id="about" role="main">
-	<div class="container">
-	  <div class="avatar">
-		<img class="img-circle" src="static/img/{{ site.avatar }}" alt="Headshot of Ruben speaking">
-	  </div>
-    <div class="row text-left">
-      <div class="col-sm-offset-2 col-sm-8">
-        <div class="row text-center">
-          <h3>{{ site.author }}</h3>
-        </div>
-        <br>
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Ruben Nic</title>
+    <meta name="description" content="Ruben Nic's work & thoughts" />
+    <meta name="author" content="Ruben Nic" />
+    <style>
+      body {
+        margin: 0;
+        background-color: #f5f5f5;
+        border-top: 5px solid #6b6b6b;
+        color: #333;
+      }
+      a {
+        color: #6b6b6b;
+      }
+      a:hover {
+        color: #979797;
+      }
+      .outer-container {
+        border-top: 5px solid #979797;
+        margin: 15px 10%;
+      }
+      .inner-container {
+        border-top: 5px solid #c3c3c3;
+        border-bottom: 5px solid #c3c3c3;
+        display: flex;
+        flex-direction: column;
+        margin: 15px auto;
+        padding-bottom: 15px;
+        max-width: 550px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="outer-container">
+      <div class="inner-container">
+        <h1>Rebuilding & Rethinking</h1>
         <p>
-          I'm a human-centric software engineer. Software's artifacts, both product and source code, are made for and by humans. They should be built to conform to our feebleness. Don't reinvent humans in the shape of computers, reinvent software in the shape of humans.
+          Like the Ise Jingu shrine in Mie Prefecture, Japan this site is
+          periodically rebuilt. You're catching it during one of those periods
+          of transition. Take time to appreciate the lack of anything telling
+          you how great I want you to think I am so I can satisfy my ego and
+          vocational aspirations. I hope to one day be happy with what I am and
+          not what I produce.
         </p>
-        <br>
+        <p>
+          Till then you can
+          <a href="https://twitter.com/RubenSndwch">follow me on Twitter</a>.
+        </p>
       </div>
     </div>
-      <p class="no-margin no-indent">
-        Want to chat?
-      </p>
-	  {% include social.html %}
-	</div>
-</section>
+  </body>
+</html>
