@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Basic Example</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        padding: 0 25%;
+        background-color: #f9f9f9;
+      }
+      a {
+        color: #808080;
+      }
+      .fit-picture {
+        max-width: 100%;
+      }
+      .block {
+        display: block;
+      }
+      .margins {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Basic Example</h1>
+
+      <p>
+        Use this example to get comfortable moving to and from elements with
+        VoiceOver.
+      </p>
+
+      <p>
+        This is a longer bit of text so you can practice stopping and starting
+        VoiceOver. The rest of this test doesn't really say anything important.
+        It just goes on and on without having much of a point.
+      </p>
+
+      <a href="./basic.html">This link reloads the page.</a>
+
+      <p>
+        The next image does not have an alt tag.
+      </p>
+
+      <img class="fit-picture" src="./images/artemis.jpg" />
+
+      <p>
+        However, this image does have an alt tag.
+      </p>
+
+      <img
+        class="fit-picture"
+        src="./images/sad.jpg"
+        alt="Women sadly resting her head on her hand. She is sad because she does not know what the last image is."
+      />
+
+      <button type="button" class="block margins">
+        Button with no action
+      </button>
+
+      <button type="button" disabled="true" class="block margins">
+        Disabled button
+      </button>
+
+      <a href="./rotor.html">Go to the Rotor example.</a>
+    </main>
+  </body>
+</html>
