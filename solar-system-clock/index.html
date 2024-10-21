@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <title>solar system</title>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="orientation" content="landscape">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <meta property="og:title" content="solar system">
+    <meta property="og:description" content="Generative code art by Michael Ruppe.">
+
+    <!-- can't go any higher than these p5 versions, as it won't work on iOS 9.3.5 -->
+    <script src="p5.0.9.0.min.js"></script>
+    <script src="p5.sound.0.3.10.min.js"></script>
+
+    <script src="src/utlilites.js"></script>
+    <script src="src/constants.js"></script>
+
+    <!-- import all of the celestial bodies classes -->
+    <script src="src/celestial_bodies/sun.js"></script>
+    <script src="src/celestial_bodies/moon.js"></script>
+    <script src="src/celestial_bodies/nebula.js"></script>
+    <script src="src/celestial_bodies/planet.js"></script>
+    <script src="src/celestial_bodies/planetTrail.js"></script>
+    <script src="src/celestial_bodies/star.js"></script>
+
+    <!-- import the main render loop logic -->
+    <script src="src/renderLoop.js"></script>
+
+  </head>
+  <body>
+    <div id="errors"></div>
+  </body>
+</html>
