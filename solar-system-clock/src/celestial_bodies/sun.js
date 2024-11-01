@@ -3,7 +3,7 @@ function Sun() {
   this.pos = createVector(0, 0);
   this.vel = createVector(0, 0);
   this.lastGrowthTime = 0;
-  this.growthInterval = random(1800000, 2100000); // 30 - 35 mins
+  this.growthInterval = random(1200000, 1500000); // 20 - 25 mins
   //random(20000, 50000); // 5 seconds in milliseconds
   this.growthAmount = random(1, 5); // Amount to increase the sun's mass by
   this.d = this.mass * 2;
@@ -113,7 +113,7 @@ function Sun() {
     this.pos = createVector(0, 0);
     this.vel = createVector(0, 0);
     this.lastGrowthTime = 0;
-    this.growthInterval = random(1800000, 2100000);
+    this.growthInterval = random(1200000, 1500000);
     this.growthAmount = random(1, 5); // Amount to increase the sun's mass by
     this.d = this.mass * 2;
   };

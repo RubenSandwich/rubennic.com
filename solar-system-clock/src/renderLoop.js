@@ -85,7 +85,7 @@ try {
       tickNum: 0,
       tickIntervalRef: null,
 
-      planetAddInterval: random(1800000, 2100000), // 30 - 35 mins
+      planetAddInterval: random(1200000, 1500000), // 20 - 25 mins
       lastPlanetAddTime: 0,
       planetsToAdd: [], // planets left to add
       orbitalRadii: [], // Array to store orbital ring radii
@@ -183,10 +183,6 @@ try {
   function draw() {
     var year = universeState.tickNum * CONSTANTS.tickPeriod;
 
-    if (frameCount > 5 && !universeState.endSound.isPlaying()) {
-      universeState.endSound.play();
-    }
-
     background(10); // #0A0A0A
 
     translate(width / 2, height / 2);
@@ -267,7 +263,8 @@ try {
       }
     }
 
-    if (frameCount % 100000 === 0) {
+    // 0.7 min
+    if (frameCount % 42000 === 0) {
       if (universeState.stars.length > 0) {
         var randomIndex = floor(random(universeState.stars.length));
 
