@@ -23,6 +23,18 @@ function prettyNumString(num) {
   return (num / divideNum).toFixed(2) + unit + " years old";
 }
 
+function radialGradient(ctx, x, y, radius, colorStops) {
+  var gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
+  // var gradient = ctx.createLinearGradient(x, y, 200, 200);
+
+  for (var index = 0; index < colorStops.length; index++) {
+    var colorStop = colorStops[index];
+    gradient.addColorStop(colorStop.offset, colorStop.color);
+  }
+
+  ctx.fillStyle = gradient;
+}
+
 // Because of our old version of p5, we don't have the normal describe
 function a11yDescribe(p5Canvas, description) {
   var canvasElement = p5Canvas.canvas;

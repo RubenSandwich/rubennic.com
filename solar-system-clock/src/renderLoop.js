@@ -1,28 +1,6 @@
 var errorDiv;
 
-var universeState = {
-  p5Canvas: null,
-  logUuid: generateUUID(),
-
-  tickNum: 0,
-  tickIntervalRef: null,
-
-  planetAddInterval: 10000, // Add a new planet every second
-  lastPlanetAddTime: 0,
-  planetsToAdd: [], // planets left to add
-  orbitalRadii: [], // Array to store orbital ring radii
-
-  sun: null,
-  planets: [],
-  numPlanets: 1,
-  planetTrails: [],
-  stars: [], // Array to store star objs
-  numStars: 20, // Number of stars to draw
-  nebulas: [], // Array to store nebulas objs
-  numNebulas: 5, // Number of nebulas to draw
-
-  endSound: null,
-};
+var universeState;
 
 function displayError(div, message) {
   if (!div) {
@@ -100,17 +78,39 @@ document.ontouchmove = function (event) {
 
 try {
   function preload() {
-    universeState.endSound = loadSound(
-      "End_Times.mp3"
-    );
+    universeState = {
+      p5Canvas: null,
+      logUuid: generateUUID(),
+
+      tickNum: 0,
+      tickIntervalRef: null,
+
+      planetAddInterval: random(1800000, 2100000), // 30 - 35 mins
+      lastPlanetAddTime: 0,
+      planetsToAdd: [], // planets left to add
+      orbitalRadii: [], // Array to store orbital ring radii
+
+      sun: null,
+      planets: [],
+      numPlanets: 5,
+      planetTrails: [],
+      stars: [], // Array to store star objs
+      numStars: 200, // Number of stars to draw
+      nebulas: [], // Array to store nebulas objs
+      numNebulas: 5, // Number of nebulas to draw
+
+      endSound: null,
+    };
+
+    universeState.endSound = loadSound("End_Times.mp3");
   }
 
   function setup() {
-    universeState.endSound.onended(function () {
-      setup();
-    });
+    // universeState.endSound.onended(function () {
+    //   setup();
+    // });
 
-    logTimes(CONSTANTS.logUuid);
+    // logTimes(CONSTANTS.logUuid);
 
     universeState.p5Canvas = createCanvas(windowWidth, windowHeight);
     frameRate(20); // maybe set to 10 when prod?
@@ -173,6 +173,11 @@ try {
     universeState.tickIntervalRef = setInterval(function () {
       universeState.tickNum++;
     }, CONSTANTS.tickIntervalMs);
+
+    // we want to add the smallest mass planets first
+    universeState.planetsToAdd.sort(function (a, b) {
+      return a.mass - b.mass;
+    });
   }
 
   function draw() {
@@ -186,7 +191,6 @@ try {
 
     translate(width / 2, height / 2);
 
-    // Use additive blending for a glowing effect
     blendMode(ADD);
     for (var i = 0; i < universeState.nebulas.length; i++) {
       universeState.nebulas[i].draw();
@@ -202,7 +206,7 @@ try {
 
     if (
       millis() - universeState.lastPlanetAddTime >
-      universeState.planetAddInterval &&
+        universeState.planetAddInterval &&
       universeState.planetsToAdd.length > 0
     ) {
       var newBody = universeState.planetsToAdd.shift();
@@ -211,14 +215,14 @@ try {
       universeState.lastPlanetAddTime = millis();
     }
 
-    for (var i = universeState.planetTrails.length - 1; i >= 0; i--) {
+    for (var i = 0; i < universeState.planetTrails.length; i++) {
       var shouldContinueDrawing = universeState.planetTrails[i].draw();
       if (!shouldContinueDrawing) {
         universeState.planetTrails.splice(i, 1);
       }
     }
 
-    for (var i = universeState.planets.length - 1; i >= 0; i--) {
+    for (var i = 0; i < universeState.planets.length; i++) {
       universeState.planets[i].move();
       universeState.planets[i].draw();
 
@@ -226,10 +230,11 @@ try {
       if (
         universeState.planets[i] !== universeState.sun &&
         p5.Vector.dist(universeState.planets[i].pos, universeState.sun.pos) +
-        universeState.planets[i].d / 2 <=
-        universeState.sun.d / 2
+          universeState.planets[i].d / 2 <=
+          universeState.sun.d / 2
       ) {
-        universeState.planets[i].planetTrail.deactivate(); // Deactivate the trail
+        universeState.planets[i].planetTrail.beginWindDown(); // wind down the trail
+        universeState.planets[i].destroy();
         universeState.planets.splice(i, 1); // Remove the planet
 
         continue; // Skip to the next iteration
@@ -243,9 +248,26 @@ try {
       universeState.sun.stage === "sun"
     ) {
       universeState.sun.beginBlackHole();
+
+      if (!universeState.endSound.isPlaying()) {
+        universeState.endSound.play();
+      }
     }
 
-    if (frameCount % 100 === 0) {
+    if (universeState.sun.stage === "black hole") {
+      if (frameCount % 200 === 0) {
+        for (var i = 0; i < universeState.nebulas.length; i++) {
+          // 30% chance for each nebula to change
+          if (random(1) < 0.3) {
+            var newAlpha =
+              universeState.nebulas[i].currentAlpha - random(5, 10);
+            universeState.nebulas[i].changeAlpha(newAlpha);
+          }
+        }
+      }
+    }
+
+    if (frameCount % 100000 === 0) {
       if (universeState.stars.length > 0) {
         var randomIndex = floor(random(universeState.stars.length));
 
@@ -259,14 +281,21 @@ try {
       universeState.stars.length === 0 &&
       universeState.sun.stage === "black hole"
     ) {
-      universeState.sun.beginBigBang();
-    }
+      universeState.sun.beginBigBang(function () {
+        for (var i = 0; i < universeState.nebulas.length; i++) {
+          universeState.nebulas[i].destroy();
+        }
 
-    textSize(20);
-    fill(255);
+        // restart
+        setup();
+      });
+    }
 
     var universeAge = prettyNumString(year);
     var universeAgeWidth = textWidth(universeAge);
+
+    textSize(20);
+    fill(255);
     text(universeAge, width / 2 - universeAgeWidth - 20, height / 2 - 20);
 
     a11yDescribe(universeState.p5Canvas, "test");

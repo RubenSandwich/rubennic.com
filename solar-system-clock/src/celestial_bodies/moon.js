@@ -40,6 +40,11 @@ function Moon(
     // Update planet trail
     this.planetTrail.addPoint(this.pos.copy());
   };
+
+  this.destroy = function () {
+    this.planetTrail = null;
+    this.orbitingBody = null;
+  };
 }
 
 Moon.Create = function Create(mass, color, orbitingBody, planetTrail) {

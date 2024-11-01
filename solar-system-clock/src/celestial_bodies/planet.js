@@ -32,6 +32,11 @@ function Planet(_mass, _pos, _vel, _color, _orbitingBody, _planetTrail) {
     f.setMag((G * this.mass * child.mass) / (r * r));
     return f;
   };
+
+  this.destroy = function () {
+    this.planetTrail = null;
+    this.orbitingBody = null;
+  };
 }
 
 Planet.Create = function Create(

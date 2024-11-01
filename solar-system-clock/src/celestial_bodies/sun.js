@@ -1,9 +1,10 @@
 function Sun() {
-  this.mass = random(20, 40);
+  this.mass = random(20, 35);
   this.pos = createVector(0, 0);
   this.vel = createVector(0, 0);
   this.lastGrowthTime = 0;
-  this.growthInterval = random(2000, 5000); // 5 seconds in milliseconds
+  this.growthInterval = random(1800000, 2100000); // 30 - 35 mins
+  //random(20000, 50000); // 5 seconds in milliseconds
   this.growthAmount = random(1, 5); // Amount to increase the sun's mass by
   this.d = this.mass * 2;
   this.colorsByMass = {
@@ -29,6 +30,8 @@ function Sun() {
   this.stage = "sun"; // "sun", "big bang", or "black hole"
   this.particles = [];
   this.numParticles = 400;
+
+  this.bigBangCallback = null;
 
   this.draw = function () {
     if (this.stage === "big bang") {
@@ -73,12 +76,22 @@ function Sun() {
   };
 
   this.drawSun = function () {
-    fill(this.currentColor);
+    // vary the color so the sun "breaths"
+    var sunColor = color(
+      hue(this.currentColor) + sin(frameCount * 0.01) * 20,
+      saturation(this.currentColor),
+      brightness(this.currentColor) + sin(frameCount * 0.05) * 5
+    );
+    fill(sunColor);
+
+    var diameter = this.d + sin(frameCount * 0.01) * 5;
+
     noStroke();
-    ellipse(this.pos.x, this.pos.y, this.d, this.d);
+    ellipse(this.pos.x, this.pos.y, diameter, diameter);
   };
 
-  this.beginBigBang = function () {
+  this.beginBigBang = function (bigBangCallback) {
+    this.bigBangCallback = bigBangCallback;
     this.stage = "big bang";
 
     // update any existing particles so that they are never static
@@ -100,7 +113,7 @@ function Sun() {
     this.pos = createVector(0, 0);
     this.vel = createVector(0, 0);
     this.lastGrowthTime = 0;
-    this.growthInterval = random(2000, 5000); // 5 seconds in milliseconds
+    this.growthInterval = random(1800000, 2100000);
     this.growthAmount = random(1, 5); // Amount to increase the sun's mass by
     this.d = this.mass * 2;
   };
@@ -130,7 +143,7 @@ function Sun() {
     this.drawSun();
 
     if (this.particles.length === 0) {
-      setup();
+      this.bigBangCallback();
     }
   };
 

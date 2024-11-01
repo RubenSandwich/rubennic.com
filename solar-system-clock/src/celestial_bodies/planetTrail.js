@@ -2,14 +2,14 @@ function PlanetTrail(_color, _pathLengthMax, _trailAlphas) {
   this.color = _color;
   this.path = [];
   this.pathLengthMax = _pathLengthMax;
-  this.isActive = true; // New property to track if the planet is still active
+  this.windDown = false;
   this.trailAlphas = _trailAlphas;
 
   this.draw = function () {
-    if (!this.isActive) {
+    if (this.windDown) {
       this.path.splice(0, 1);
       if (this.path.length <= 0) {
-        return false; // Stop drawing this trail
+        return false; // Stop drawing this trail, and remove it
       }
     }
 
@@ -37,8 +37,8 @@ function PlanetTrail(_color, _pathLengthMax, _trailAlphas) {
     }
   };
 
-  this.deactivate = function () {
-    this.isActive = false;
+  this.beginWindDown = function () {
+    this.windDown = true;
   };
 }
 
