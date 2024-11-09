@@ -25,7 +25,8 @@ jobs:
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
-        working-directory: ./solar-system-clock/tmp/solar-system-clock
+        with:
+          working-directory: ./solar-system-clock/tmp/solar-system-clock
 
       - name: Install solar-system-clock dependencies
         run: npm ci
