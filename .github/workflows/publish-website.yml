@@ -2,15 +2,25 @@ name: Publish Website
 
 on:
   push:
-    branches: # triggers on any push to master
+    branches:
       - main
-  workflow_dispatch: # allows manual trigger
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   build-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -37,15 +47,15 @@ jobs:
           mv ./dist/* ../../
           cd ../../
           rm -rf ./tmp
-          ls
-          pwd
-          cd ..
-          ls
-          pwd
-          ls
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{ github.workspace }}
+          path: ${{ github.workspace }}
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
