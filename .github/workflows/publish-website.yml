@@ -25,6 +25,7 @@ jobs:
 
       - name: Move into solar-system-clock repo
         run: |
+          ls
           cd ./solar-system-clock/tmp
 
       - name: Set up Node.js
@@ -38,7 +39,6 @@ jobs:
 
       - name: Move solar-system-clock build
         run: |
-          ls
           mv ./dist/* ../
           cd ..
           rm -rf ./temp
