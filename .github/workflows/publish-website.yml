@@ -38,6 +38,7 @@ jobs:
 
       - name: Move solar-system-clock build
         run: |
+          ls
           mv ./dist/* ../
           cd ..
           rm -rf ./temp
