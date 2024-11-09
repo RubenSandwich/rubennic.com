@@ -23,26 +23,25 @@ jobs:
           sparse-checkout: |
             solar-system-clock
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          working-directory: ./solar-system-clock/tmp/solar-system-clock
-
       - name: Install solar-system-clock dependencies
-        run: npm ci
         working-directory: ./solar-system-clock/tmp/solar-system-clock
+        run: npm ci
 
       - name: Build solar-system-clock
-        run: npm run build --if-present
         working-directory: ./solar-system-clock/tmp/solar-system-clock
+        run: npm run build --if-present
 
       - name: Move solar-system-clock build
+        working-directory: ./solar-system-clock/tmp/solar-system-clock
         run: |
           mv ./dist/* ../../
           cd ../../
-          rm -rf ./temp
+          rm -rf ./tmp
           ls
-        working-directory: ./solar-system-clock/tmp/solar-system-clock
+          pwd
+          cd ..
+          ls
+          pwd
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
