@@ -24,24 +24,24 @@ jobs:
             solar-system-clock
 
       - name: Set up Node.js
-        working-directory: ./solar-system-clock/tmp/solar-system-clock
         uses: actions/setup-node@v3
+        working-directory: ./solar-system-clock/tmp/solar-system-clock
 
       - name: Install solar-system-clock dependencies
-        working-directory: ./solar-system-clock/tmp/solar-system-clock
         run: npm ci
+        working-directory: ./solar-system-clock/tmp/solar-system-clock
 
       - name: Build solar-system-clock
-        working-directory: ./solar-system-clock/tmp/solar-system-clock
         run: npm run build --if-present
+        working-directory: ./solar-system-clock/tmp/solar-system-clock
 
       - name: Move solar-system-clock build
-        working-directory: ./solar-system-clock/tmp/solar-system-clock
         run: |
           mv ./dist/* ../../
           cd ../../
           rm -rf ./temp
           ls
+        working-directory: ./solar-system-clock/tmp/solar-system-clock
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
