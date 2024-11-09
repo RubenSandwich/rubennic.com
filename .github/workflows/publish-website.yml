@@ -26,7 +26,8 @@ jobs:
       - name: Move into solar-system-clock repo
         run: |
           ls
-          cd ./solar-system-clock/tmp
+          cd ./solar-system-clock
+          ls
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
