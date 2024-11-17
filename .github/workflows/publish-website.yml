@@ -6,7 +6,7 @@ on:
       - main
   workflow_dispatch:
   repository_dispatch:
-    types: [dispatch-event]
+    types: [publish-website]
 
 permissions:
   contents: read
