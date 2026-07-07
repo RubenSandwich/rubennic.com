@@ -64,7 +64,8 @@ jobs:
 
       - name: Build accordion-hero
         working-directory: ./accordion-hero/tmp/accordion-hero
-        run: npm run build --if-present
+        # accordion-hero is a Vite app; set base so assets resolve under /accordion-hero/
+        run: npm run build --if-present -- --base=/accordion-hero/
 
       - name: Move accordion-hero build
         working-directory: ./accordion-hero/tmp/accordion-hero
