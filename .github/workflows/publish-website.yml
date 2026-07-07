@@ -50,6 +50,29 @@ jobs:
           cd ../../
           rm -rf ./tmp
 
+      - name: Checkout accordion-hero
+        uses: actions/checkout@v4
+        with:
+          repository: RubenSandwich/fun-projects
+          path: ./accordion-hero/tmp
+          sparse-checkout: |
+            accordion-hero
+
+      - name: Install accordion-hero dependencies
+        working-directory: ./accordion-hero/tmp/accordion-hero
+        run: npm ci
+
+      - name: Build accordion-hero
+        working-directory: ./accordion-hero/tmp/accordion-hero
+        run: npm run build --if-present
+
+      - name: Move accordion-hero build
+        working-directory: ./accordion-hero/tmp/accordion-hero
+        run: |
+          mv ./dist/* ../../
+          cd ../../
+          rm -rf ./tmp
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
