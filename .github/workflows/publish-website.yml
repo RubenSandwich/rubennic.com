@@ -50,25 +50,25 @@ jobs:
           cd ../../
           rm -rf ./tmp
 
-      - name: Checkout accordion-hero
+      - name: Checkout concertina-hero
         uses: actions/checkout@v4
         with:
           repository: RubenSandwich/fun-projects
-          path: ./accordion-hero/tmp
+          path: ./concertina-hero/tmp
           sparse-checkout: |
-            accordion-hero
+            concertina-hero
 
-      - name: Install accordion-hero dependencies
-        working-directory: ./accordion-hero/tmp/accordion-hero
+      - name: Install concertina-hero dependencies
+        working-directory: ./concertina-hero/tmp/concertina-hero
         run: npm ci
 
-      - name: Build accordion-hero
-        working-directory: ./accordion-hero/tmp/accordion-hero
-        # accordion-hero is a Vite app; set base so assets resolve under /accordion-hero/
-        run: npm run build --if-present -- --base=/accordion-hero/
+      - name: Build concertina-hero
+        working-directory: ./concertina-hero/tmp/concertina-hero
+        # concertina-hero is a Vite app; set base so assets resolve under /concertina-hero/
+        run: npm run build --if-present -- --base=/concertina-hero/
 
-      - name: Move accordion-hero build
-        working-directory: ./accordion-hero/tmp/accordion-hero
+      - name: Move concertina-hero build
+        working-directory: ./concertina-hero/tmp/concertina-hero
         run: |
           mv ./dist/* ../../
           cd ../../
